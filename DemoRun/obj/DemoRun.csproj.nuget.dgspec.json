@@ -1,0 +1,241 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/garry/runas/DemoRun/DemoRun.csproj": {}
+  },
+  "projects": {
+    "/home/garry/runas/DemoRun/DemoRun.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/garry/runas/DemoRun/DemoRun.csproj",
+        "projectName": "DemoRun",
+        "projectPath": "/home/garry/runas/DemoRun/DemoRun.csproj",
+        "packagesPath": "/home/garry/.nuget/packages/",
+        "outputPath": "/home/garry/runas/DemoRun/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/garry/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/home/garry/runas/FileSystem/FileSystem.csproj": {
+                "projectPath": "/home/garry/runas/FileSystem/FileSystem.csproj"
+              },
+              "/home/garry/runas/Plugin/Plugin.csproj": {
+                "projectPath": "/home/garry/runas/Plugin/Plugin.csproj"
+              },
+              "/home/garry/runas/RunasLib/RunasLib.csproj": {
+                "projectPath": "/home/garry/runas/RunasLib/RunasLib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/garry/runas/FileSystem/FileSystem.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/garry/runas/FileSystem/FileSystem.csproj",
+        "projectName": "FileSystem",
+        "projectPath": "/home/garry/runas/FileSystem/FileSystem.csproj",
+        "packagesPath": "/home/garry/.nuget/packages/",
+        "outputPath": "/home/garry/runas/FileSystem/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/garry/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/home/garry/runas/Plugin/Plugin.csproj": {
+                "projectPath": "/home/garry/runas/Plugin/Plugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/garry/runas/Plugin/Plugin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/garry/runas/Plugin/Plugin.csproj",
+        "projectName": "Plugin",
+        "projectPath": "/home/garry/runas/Plugin/Plugin.csproj",
+        "packagesPath": "/home/garry/.nuget/packages/",
+        "outputPath": "/home/garry/runas/Plugin/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/garry/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/garry/runas/RunasLib/RunasLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/garry/runas/RunasLib/RunasLib.csproj",
+        "projectName": "RunasLib",
+        "projectPath": "/home/garry/runas/RunasLib/RunasLib.csproj",
+        "packagesPath": "/home/garry/.nuget/packages/",
+        "outputPath": "/home/garry/runas/RunasLib/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/garry/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/home/garry/runas/FileSystem/FileSystem.csproj": {
+                "projectPath": "/home/garry/runas/FileSystem/FileSystem.csproj"
+              },
+              "/home/garry/runas/Plugin/Plugin.csproj": {
+                "projectPath": "/home/garry/runas/Plugin/Plugin.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

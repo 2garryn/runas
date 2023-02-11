@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "Plugin/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Plugin.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Plugin.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Plugin/1.0.0": {
+      "type": "project",
+      "path": "../Plugin/Plugin.csproj",
+      "msbuildProject": "../Plugin/Plugin.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "Plugin >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/garry/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/garry/runas/FileSystem/FileSystem.csproj",
+      "projectName": "FileSystem",
+      "projectPath": "/home/garry/runas/FileSystem/FileSystem.csproj",
+      "packagesPath": "/home/garry/.nuget/packages/",
+      "outputPath": "/home/garry/runas/FileSystem/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/garry/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "/home/garry/runas/Plugin/Plugin.csproj": {
+              "projectPath": "/home/garry/runas/Plugin/Plugin.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
