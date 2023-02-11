@@ -9,5 +9,4 @@ public interface IrnFile {
     public Task<StreamReader> CreateStreamReader();
     public Task<StreamWriter> CreateStreamWriter();
     public bool IsBusy();
-    public Task WaitFree();
 }

@@ -33,11 +33,8 @@ public class FileImpl : FileSystem.IrnFile
     }
 
     public bool IsBusy() => _notifierList.IsBusy(this);
-    public async Task WaitFree() => await _notifierList.WaitFree();
-
-    internal void Closed() {
-        _notifierList.Closed(this);
-    }
+    internal void Closed() => _notifierList.Closed(this);
+    
 }
 
 

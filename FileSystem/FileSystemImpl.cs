@@ -12,11 +12,11 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
     private readonly string _pluginId;
     private FileNotifierList _notifierList;
 
-    public FileSystemImpl(string rootDir, string pluginId) 
+    public FileSystemImpl(string rootDir, string pluginId, FileNotifierList notifierList) 
     {
         _rootDir = rootDir;
         _pluginId = pluginId;
-        _notifierList = new FileNotifierList();
+        _notifierList = notifierList;
         CreatePluginDir();
     }
 
