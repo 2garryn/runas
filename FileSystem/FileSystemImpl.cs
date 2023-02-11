@@ -10,13 +10,13 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
 
     private readonly string _rootDir;
     private readonly string _pluginId;
-    private Action<FileSystem.IrnFile> _notifyUpdated;
+    private FileNotifierList _notifierList;
 
-    public FileSystemImpl(string rootDir, string pluginId, Action<FileSystem.IrnFile> notifyUpdated) 
+    public FileSystemImpl(string rootDir, string pluginId) 
     {
         _rootDir = rootDir;
         _pluginId = pluginId;
-        _notifyUpdated = notifyUpdated;
+        _notifierList = new FileNotifierList();
         CreatePluginDir();
     }
 
@@ -51,7 +51,7 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
         string[] dirs = Directory.GetDirectories(directory.RawPath(), "*", SearchOption.TopDirectoryOnly);
         return dirs.Select((dir) => {
             var relDir = Path.Join(directory.RelativePath(), Path.GetFileName(Path.GetDirectoryName(dir)));
-            return (IrnDirectory)(new DirectoryImpl(relDir, dir, _notifyUpdated));
+            return (IrnDirectory)(new DirectoryImpl(relDir, dir, _notifierList));
         });
     }
 
@@ -64,9 +64,9 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
     {
         var relPath = Path.Join("/", "plugins", _pluginId);
         var rawPath = Path.Join(_rootDir, relPath);
-        return new DirectoryImpl(relPath, rawPath, _notifyUpdated);
+        return new DirectoryImpl(relPath, rawPath, _notifierList);
     }
 
 
-    public IrnDirectory RootDirectory() => new DirectoryImpl("/", _rootDir, _notifyUpdated);
+    public IrnDirectory RootDirectory() => new DirectoryImpl("/", _rootDir, _notifierList);
 }

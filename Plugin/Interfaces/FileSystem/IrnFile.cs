@@ -5,10 +5,9 @@ public interface IrnFile {
     public string RelativePath();
     public string RawPath();
     public bool Exists();
-    public void NotifyUpdated();
-    public FileStream CreateFileStream(FileMode fileMode);
-    public StreamReader CreateStreamReader();
-    public StreamWriter CreateStreamWriter();
-    public TextReader CreateTextReader();
-    public TextWriter CreateTextWriter();
+    public Task<FileStream> CreateFileStream(FileMode fileMode);
+    public Task<StreamReader> CreateStreamReader();
+    public Task<StreamWriter> CreateStreamWriter();
+    public bool IsBusy();
+    public Task WaitFree();
 }

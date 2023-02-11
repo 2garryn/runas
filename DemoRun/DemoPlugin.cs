@@ -37,11 +37,6 @@ public class DemoPlugin : IrnPlugin
         var alreadyExist = fs.Createfile(tempFile);
         Console.WriteLine($"File already exist: {alreadyExist}, exist: {tempFile.Exists()}");
 
-        using (TextWriter writer = tempFile.CreateTextWriter()) {
-            writer.WriteLine("Test line");
-        }
-
-
 
     }
 }
