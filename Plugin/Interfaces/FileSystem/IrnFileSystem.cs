@@ -6,4 +6,6 @@ public interface IrnFileSystem {
     public IEnumerable<IrnDirectory> ListDirectories(IrnDirectory directory);
     public IEnumerable<IrnFile> ListFiles(IrnDirectory directory);   
     public bool Createfile(IrnFile file);
+    public void Subscribe(IrnDirectory directory, IFsNotifySubscriber subscriber);
+    public void Unsubscribe(IrnDirectory directory, IFsNotifySubscriber subscriber);
 }

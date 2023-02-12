@@ -1,20 +1,21 @@
+namespace FsImplementation;
 using Plugin;
 using System.Collections.Concurrent;
 using System.Threading;
 
-public class FileNotifierList
+public class FileLocker
 {
     private ConcurrentDictionary<string, SemaphoreSlim> _dict;
-    private IFsNotifyCatcher _catcher;
-    public FileNotifierList(IFsNotifyCatcher catcher) 
+    private Notificator _notificator;
+    public FileLocker(Notificator notificator) 
     {
         _dict = new ConcurrentDictionary<string, SemaphoreSlim>();
-        _catcher = catcher;
+        _notificator = notificator;
     }
 
     public async Task Opened(FileSystem.IrnFile file)
     {
-        _catcher.Notify(new NotifyOpened{File = file});
+        _notificator.Notify(new FileSystem.NotifyOpened{File = file});
         var semaphore = _dict.GetOrAdd(file.RelativePath(), (_relativePath) => new SemaphoreSlim(1));
         await semaphore.WaitAsync();
     }
@@ -23,10 +24,9 @@ public class FileNotifierList
     {
         SemaphoreSlim? semaphore;
         var removed = _dict.TryRemove(file.RelativePath(), out semaphore);
+        //TODO: add condition on removed
         semaphore?.Release();
-        _catcher.Notify(new NotifyClosed{File = file});
-
-
+        _notificator.Notify(new FileSystem.NotifyClosed{File = file});
     }
 
     public bool IsBusy(FileSystem.IrnFile file) => _dict.ContainsKey(file.RelativePath());

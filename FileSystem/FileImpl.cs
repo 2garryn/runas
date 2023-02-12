@@ -1,3 +1,4 @@
+namespace FsImplementation;
 using Plugin;
 using System.IO;
 
@@ -5,8 +6,8 @@ public class FileImpl : FileSystem.IrnFile
 {
     public readonly string _relPath;
     public readonly string _rawPath;
-    private FileNotifierList _notifierList;
-    internal FileImpl(string relPath, string rawPath, FileNotifierList notifierList)
+    private FileLocker _notifierList;
+    internal FileImpl(string relPath, string rawPath, FileLocker notifierList)
     {
         _relPath = relPath;
         _rawPath = rawPath;
