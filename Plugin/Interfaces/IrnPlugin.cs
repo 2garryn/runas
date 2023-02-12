@@ -3,6 +3,7 @@ using Endpoint;
 using Common;
 
 
-public interface IrnPlugin {
+public interface IrnPlugin
+{
     public void Registered(IrnServiceRegistry serviceRegistry);
 }

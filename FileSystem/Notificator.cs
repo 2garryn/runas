@@ -7,7 +7,7 @@ using Plugin;
 public class Notificator
 {
     private SubscribersTree _tree;
-    public Notificator() 
+    public Notificator()
     {
         _tree = new SubscribersTree();
     }
@@ -33,20 +33,20 @@ public class SubscribersTree
     }
     public bool AddSubscriber(FileSystem.IrnDirectory directory, FileSystem.IFsNotifySubscriber subscriber)
     {
-        if (!directory.Exists()) 
+        if (!directory.Exists())
         {
             return false;
         }
         string[] directories = directory.RelativePath().Split(Path.DirectorySeparatorChar);
-         _rwl.AcquireWriterLock(10000);
+        _rwl.AcquireWriterLock(10000);
         var currentElem = _tree;
-        foreach(string currentPathName in directories) 
+        foreach (string currentPathName in directories)
         {
-            if (currentElem.SubDirs.ContainsKey(currentPathName)) 
+            if (currentElem.SubDirs.ContainsKey(currentPathName))
             {
                 currentElem = currentElem.SubDirs[currentPathName];
-            } 
-            else 
+            }
+            else
             {
                 var newElem = new SubscribersTreeElem
                 {
@@ -64,23 +64,23 @@ public class SubscribersTree
     }
     public void RemoveSubscriber(FileSystem.IrnDirectory directory, FileSystem.IFsNotifySubscriber subscriber)
     {
-        
+
     }
 
-    public void Notify(FileSystem.IFsNotify notify) 
+    public void Notify(FileSystem.IFsNotify notify)
     {
         string[] directories = notify.File.RelativePath().Split(Path.DirectorySeparatorChar);
         var subscribers = new List<FileSystem.IFsNotifySubscriber>();
         _rwl.AcquireReaderLock(10000);
         var currentElem = _tree;
-        foreach(string currentPathName in directories) 
+        foreach (string currentPathName in directories)
         {
             subscribers.AddRange(currentElem.Subscribers);
-            if(currentElem.SubDirs.ContainsKey(currentPathName))
+            if (currentElem.SubDirs.ContainsKey(currentPathName))
             {
                 currentElem = currentElem.SubDirs[currentPathName];
             }
-            else 
+            else
             {
                 break;
             }
@@ -96,7 +96,7 @@ public class SubscribersTree
 
 public class SubscribersTreeElem
 {
-    public required string DirName {get; init;}
-    public required HashSet<FileSystem.IFsNotifySubscriber> Subscribers {get; init;}
-    public required Dictionary<string, SubscribersTreeElem> SubDirs {get; init;}
+    public required string DirName { get; init; }
+    public required HashSet<FileSystem.IFsNotifySubscriber> Subscribers { get; init; }
+    public required Dictionary<string, SubscribersTreeElem> SubDirs { get; init; }
 }

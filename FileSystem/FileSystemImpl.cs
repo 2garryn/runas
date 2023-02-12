@@ -13,7 +13,7 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
     private FileLocker _locker;
     private Notificator _notificator;
 
-    public FileSystemImpl(string rootDir, string pluginId, FileLocker locker, Notificator notificator) 
+    public FileSystemImpl(string rootDir, string pluginId, FileLocker locker, Notificator notificator)
     {
         _rootDir = rootDir;
         _pluginId = pluginId;
@@ -29,7 +29,8 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
 
     public bool CreateDirectory(IrnDirectory directory)
     {
-        if (directory.Exists()) {
+        if (directory.Exists())
+        {
             return false;
         };
         Directory.CreateDirectory(directory.RawPath());
@@ -52,7 +53,8 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
     public IEnumerable<IrnDirectory> ListDirectories(IrnDirectory directory)
     {
         string[] dirs = Directory.GetDirectories(directory.RawPath(), "*", SearchOption.TopDirectoryOnly);
-        return dirs.Select((dir) => {
+        return dirs.Select((dir) =>
+        {
             var relDir = Path.Join(directory.RelativePath(), Path.GetFileName(Path.GetDirectoryName(dir)));
             return (IrnDirectory)(new DirectoryImpl(relDir, dir, _locker));
         });
@@ -63,13 +65,13 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
         throw new NotImplementedException();
     }
 
-    public IrnDirectory PluginDirectory() 
+    public IrnDirectory PluginDirectory()
     {
         var relPath = Path.Join("/", "plugins", _pluginId);
         var rawPath = Path.Join(_rootDir, relPath);
         return new DirectoryImpl(relPath, rawPath, _locker);
     }
-    
+
     public IrnDirectory RootDirectory() => new DirectoryImpl("/", _rootDir, _locker);
     public void Subscribe(IrnDirectory directory, IFsNotifySubscriber subscriber) => _notificator.Subscribe(directory, subscriber);
     public void Unsubscribe(IrnDirectory directory, IFsNotifySubscriber subscriber) => _notificator.Unsubscribe(directory, subscriber);
