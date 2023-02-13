@@ -1,5 +1,6 @@
 namespace Endpoint;
 
-public interface IrnEndpoints {
+public interface IrnEndpoints
+{
 
 }

@@ -1,13 +1,14 @@
+namespace FsImplementation;
+
 using Plugin;
 using System.IO;
 using System;
-using Plugin;
 public struct DirectoryImpl : FileSystem.IrnDirectory
 {
     private readonly string _relPath;
     private readonly string _rawPath;
-    private FileNotifierList _notifierList;
-    public DirectoryImpl(string relPath, string rawPath, FileNotifierList notifierList) 
+    private FileLocker _notifierList;
+    public DirectoryImpl(string relPath, string rawPath, FileLocker notifierList)
     {
         _relPath = relPath ?? throw new ArgumentNullException(nameof(relPath));
         _rawPath = rawPath ?? throw new ArgumentNullException(nameof(rawPath));

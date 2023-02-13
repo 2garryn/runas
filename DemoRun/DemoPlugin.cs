@@ -7,7 +7,8 @@ public class DemoPlugin : IrnPlugin
     public void Registered(IrnServiceRegistry serviceRegistry)
     {
         var fs = serviceRegistry.GetFileSystem();
-        if (fs == null) {
+        if (fs == null)
+        {
             throw new NullReferenceException("asdasd");
         }
         Console.WriteLine("Rootpath rawpath: " + fs.RootDirectory().RawPath());
@@ -26,7 +27,7 @@ public class DemoPlugin : IrnPlugin
         Console.WriteLine($"mydirectory exist: {tempDir.Exists()}");
 
 
-        foreach(FileSystem.IrnDirectory dir in fs.ListDirectories(fs.PluginDirectory()))
+        foreach (FileSystem.IrnDirectory dir in fs.ListDirectories(fs.PluginDirectory()))
         {
             Console.WriteLine(dir.RawPath());
             Console.WriteLine(dir.RelativePath());

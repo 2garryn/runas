@@ -1,6 +1,7 @@
 namespace FileSystem;
 
-public interface IrnDirectory {
+public interface IrnDirectory
+{
     public bool Exists();
     public string RelativePath();
     public string RawPath();
