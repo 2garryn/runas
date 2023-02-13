@@ -1,20 +1,20 @@
 namespace FileSystem;
-public record NotifyOpened : IFsNotify
+public record NotifyFileOpened : IFsNotify
 {
     public required FileSystem.IrnFile File { get; init; }
 }
 
-public record NotifyClosed : IFsNotify
+public record NotifyFileClosed : IFsNotify
 {
     public required FileSystem.IrnFile File { get; init; }
 }
 
-public record NotifyCreated : IFsNotify
+public record NotifyFileCreated : IFsNotify
 {
     public required FileSystem.IrnFile File { get; init; }
 }
 
-public record NotifyRemoved : IFsNotify
+public record NotifyFileRemoved : IFsNotify
 {
     public required FileSystem.IrnFile File { get; init; }
 }

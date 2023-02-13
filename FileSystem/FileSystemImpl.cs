@@ -44,7 +44,7 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
         {
             var fs = File.Create(file.RawPath());
             fs.Close();
-            _notificator.Notify(new FileSystem.NotifyCreated { File = file });
+            _notificator.Notify(new FileSystem.NotifyFileCreated { File = file });
             return false;
         }
         return true;

@@ -15,7 +15,7 @@ public class FileLocker
 
     public async Task Opened(FileSystem.IrnFile file)
     {
-        _notificator.Notify(new FileSystem.NotifyOpened { File = file });
+        _notificator.Notify(new FileSystem.NotifyFileOpened { File = file });
         var semaphore = _dict.GetOrAdd(file.RelativePath(), (_relativePath) => new SemaphoreSlim(1));
         await semaphore.WaitAsync();
     }
@@ -24,11 +24,12 @@ public class FileLocker
     {
         SemaphoreSlim? semaphore;
         var removed = _dict.TryRemove(file.RelativePath(), out semaphore);
-        //TODO: add condition on removed
-        semaphore?.Release();
-        _notificator.Notify(new FileSystem.NotifyClosed { File = file });
+        if (removed) 
+        {
+            semaphore?.Release();
+            _notificator.Notify(new FileSystem.NotifyFileClosed { File = file });
+        }
     }
-
     public bool IsBusy(FileSystem.IrnFile file) => _dict.ContainsKey(file.RelativePath());
 
 }
