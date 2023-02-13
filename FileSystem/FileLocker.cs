@@ -1,9 +1,5 @@
 using AsyncKeyedLock;
 namespace FsImplementation;
-using Plugin;
-using System.Collections.Concurrent;
-using System.Threading;
-
 public class FileLocker
 {
     private Notificator _notificator;    
