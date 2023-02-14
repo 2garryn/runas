@@ -1,5 +1,8 @@
 namespace FsImplementation;
+
+using FileSystem;
 using Plugin;
+using System.Collections.Generic;
 using System.IO;
 
 public class FileImpl : FileSystem.IrnFile
@@ -37,6 +40,20 @@ public class FileImpl : FileSystem.IrnFile
     public bool IsBusy() => _notifierList.IsBusy(this);
     internal void Closed() => _notifierList.Closed(this);
 
+    public void SetOwnAttrs(Attr[] attr)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<Attr> GetOwnAttrs()
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<Attr> GetAllAttrs()
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

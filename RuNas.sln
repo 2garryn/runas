@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystem", "FileSystem\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoRun", "DemoRun\DemoRun.csproj", "{E01691DA-5180-4DDF-B02D-E82BFAC28951}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentDb", "DocumentDb\DocumentDb.csproj", "{BA064252-6C13-49BF-B031-AAAF415FFD39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{E01691DA-5180-4DDF-B02D-E82BFAC28951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E01691DA-5180-4DDF-B02D-E82BFAC28951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E01691DA-5180-4DDF-B02D-E82BFAC28951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA064252-6C13-49BF-B031-AAAF415FFD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA064252-6C13-49BF-B031-AAAF415FFD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA064252-6C13-49BF-B031-AAAF415FFD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA064252-6C13-49BF-B031-AAAF415FFD39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

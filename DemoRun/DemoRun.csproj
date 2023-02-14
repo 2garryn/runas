@@ -4,6 +4,7 @@
     <ProjectReference Include="..\FileSystem\FileSystem.csproj" />
     <ProjectReference Include="..\RunasLib\RunasLib.csproj" />
     <ProjectReference Include="..\Plugin\Plugin.csproj" />
+    <ProjectReference Include="..\DocumentDb\DocumentDb.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

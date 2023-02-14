@@ -10,4 +10,7 @@ public interface IrnFile
     public Task<StreamReader> CreateStreamReader();
     public Task<StreamWriter> CreateStreamWriter();
     public bool IsBusy();
+    public void SetOwnAttrs(Attr[] attr);
+    public IEnumerable<Attr> GetOwnAttrs();
+    public IEnumerable<Attr> GetAllAttrs();
 }

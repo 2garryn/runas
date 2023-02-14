@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "tp/OlAvvIE0VsNGUm3Z2/Yoecf/0azbdelpLGh6mhVec3ncKURO/9NGwTV1mprryi5A4tsTUvnIS69A9wlqxXA==",
+  "dgSpecHash": "DjAR2xI+rdIsatQ7vXcFjtCQy2FPGLVeXyGL6f5J96SbwS6ZAq7c66RW3tIwP/YCTwhNuyG3ue7DcivCEjHyZA==",
   "success": true,
   "projectFilePath": "/home/garry/runas/DemoRun/DemoRun.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/garry/.nuget/packages/litedb/5.0.15/litedb.5.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

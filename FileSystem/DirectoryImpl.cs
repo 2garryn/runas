@@ -3,6 +3,9 @@ namespace FsImplementation;
 using Plugin;
 using System.IO;
 using System;
+using FileSystem;
+using System.Collections.Generic;
+
 public struct DirectoryImpl : FileSystem.IrnDirectory
 {
     private readonly string _relPath;
@@ -31,5 +34,20 @@ public struct DirectoryImpl : FileSystem.IrnDirectory
         var relPath = Path.Join(_relPath, filename);
         var rawPath = Path.Join(_rawPath, filename);
         return new FileImpl(relPath, rawPath, _notifierList);
+    }
+
+    public void SetOwnAttrs(Attr[] attr)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<Attr> GetOwnAttrs()
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<Attr> GetAllAttrs()
+    {
+        throw new NotImplementedException();
     }
 }

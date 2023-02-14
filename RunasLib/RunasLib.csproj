@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Plugin\Plugin.csproj" />
     <ProjectReference Include="..\FileSystem\FileSystem.csproj" />
+    <ProjectReference Include="..\DocumentDb\DocumentDb.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

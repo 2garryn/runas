@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/garry/runas/Plugin/Plugin.csproj": {}
+    "/home/garry/runas/DocumentDb/DocumentDb.csproj": {}
   },
   "projects": {
-    "/home/garry/runas/Plugin/Plugin.csproj": {
+    "/home/garry/runas/DocumentDb/DocumentDb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/garry/runas/Plugin/Plugin.csproj",
-        "projectName": "Plugin",
-        "projectPath": "/home/garry/runas/Plugin/Plugin.csproj",
+        "projectUniqueName": "/home/garry/runas/DocumentDb/DocumentDb.csproj",
+        "projectName": "DocumentDb",
+        "projectPath": "/home/garry/runas/DocumentDb/DocumentDb.csproj",
         "packagesPath": "/home/garry/.nuget/packages/",
-        "outputPath": "/home/garry/runas/Plugin/obj/",
+        "outputPath": "/home/garry/runas/DocumentDb/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/garry/.nuget/NuGet/NuGet.Config"

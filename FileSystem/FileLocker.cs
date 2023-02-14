@@ -28,7 +28,7 @@ public class FileLocker
         {
             semaphore?.Release();
             _notificator.Notify(new FileSystem.NotifyFileClosed { File = file });
-        }
+        } 
     }
     public bool IsBusy(FileSystem.IrnFile file) => _dict.ContainsKey(file.RelativePath());
 
