@@ -7,9 +7,9 @@ public class DocumentDbFactory
 {
     private readonly LiteDatabase _db;
 
-    public DocumentDbFactory(string filename)
+    public DocumentDbFactory(LiteDatabase db)
     {
-        _db = new LiteDatabase(filename);
+        _db = db;
     }
 
     public DocumentDbImpl New(string prefix)

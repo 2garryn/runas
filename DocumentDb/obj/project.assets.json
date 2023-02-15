@@ -14,6 +14,19 @@
             "related": ".xml"
           }
         }
+      },
+      "Plugin/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LiteDb": "5.0.15"
+        },
+        "compile": {
+          "bin/placeholder/Plugin.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Plugin.dll": {}
+        }
       }
     }
   },
@@ -37,11 +50,17 @@
         "litedb.5.0.15.nupkg.sha512",
         "litedb.nuspec"
       ]
+    },
+    "Plugin/1.0.0": {
+      "type": "project",
+      "path": "../Plugin/Plugin.csproj",
+      "msbuildProject": "../Plugin/Plugin.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "LiteDb >= 5.0.15"
+      "LiteDb >= 5.0.15",
+      "Plugin >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -68,7 +87,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/garry/runas/Plugin/Plugin.csproj": {
+              "projectPath": "/home/garry/runas/Plugin/Plugin.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

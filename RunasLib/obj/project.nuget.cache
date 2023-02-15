@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2KDXNT+tfiTVwVCS9NqcdUOjw45f+AoskMbS0BMRdJMiiiSpbyP94canQ162CJQJTQGDPkdPtOz901QSiffM5Q==",
+  "dgSpecHash": "NvvbtHgRl2ehIfBVK6EvFSFrdiq9gorgwoAr/Ptnz82y8gh0Pb4OHIMu1L8QmDif2UI4v3wl+bhnICMUc9qK4A==",
   "success": true,
   "projectFilePath": "/home/garry/runas/RunasLib/RunasLib.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/garry/.nuget/packages/litedb/5.0.15/litedb.5.0.15.nupkg.sha512"
+  ],
   "logs": []
 }

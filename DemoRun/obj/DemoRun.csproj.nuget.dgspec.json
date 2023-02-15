@@ -50,6 +50,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "LiteDb": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -91,7 +97,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "/home/garry/runas/Plugin/Plugin.csproj": {
+                "projectPath": "/home/garry/runas/Plugin/Plugin.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -166,6 +176,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "LiteDb": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -219,6 +235,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "LiteDb": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -261,6 +283,9 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "/home/garry/runas/DocumentDb/DocumentDb.csproj": {
+                "projectPath": "/home/garry/runas/DocumentDb/DocumentDb.csproj"
+              },
               "/home/garry/runas/FileSystem/FileSystem.csproj": {
                 "projectPath": "/home/garry/runas/FileSystem/FileSystem.csproj"
               },

@@ -24,11 +24,11 @@ public class FileLocker
     {
         SemaphoreSlim? semaphore;
         var removed = _dict.TryRemove(file.RelativePath(), out semaphore);
-        if (removed) 
+        if (removed)
         {
             semaphore?.Release();
             _notificator.Notify(new FileSystem.NotifyFileClosed { File = file });
-        } 
+        }
     }
     public bool IsBusy(FileSystem.IrnFile file) => _dict.ContainsKey(file.RelativePath());
 

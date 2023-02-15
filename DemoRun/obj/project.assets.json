@@ -19,7 +19,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "LiteDb": "5.0.15"
+          "LiteDb": "5.0.15",
+          "Plugin": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DocumentDb.dll": {}
@@ -32,6 +33,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "LiteDb": "5.0.15",
           "Plugin": "1.0.0"
         },
         "compile": {
@@ -44,6 +46,9 @@
       "Plugin/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LiteDb": "5.0.15"
+        },
         "compile": {
           "bin/placeholder/Plugin.dll": {}
         },
@@ -55,6 +60,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "DocumentDb": "1.0.0",
           "FileSystem": "1.0.0",
           "Plugin": "1.0.0"
         },
@@ -113,6 +119,7 @@
     "net7.0": [
       "DocumentDb >= 1.0.0",
       "FileSystem >= 1.0.0",
+      "LiteDb >= 5.0.15",
       "Plugin >= 1.0.0",
       "RunasLib >= 1.0.0"
     ]
@@ -166,6 +173,12 @@
     "frameworks": {
       "net7.0": {
         "targetAlias": "net7.0",
+        "dependencies": {
+          "LiteDb": {
+            "target": "Package",
+            "version": "[5.0.15, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

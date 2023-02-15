@@ -10,11 +10,13 @@ public class FileImpl : FileSystem.IrnFile
     public readonly string _relPath;
     public readonly string _rawPath;
     private FileLocker _notifierList;
-    internal FileImpl(string relPath, string rawPath, FileLocker notifierList)
+    private AttrStorage _attrStorage;
+    internal FileImpl(string relPath, string rawPath, FileLocker notifierList, AttrStorage attrStorage)
     {
         _relPath = relPath;
         _rawPath = rawPath;
         _notifierList = notifierList;
+        _attrStorage = attrStorage;
     }
 
 
@@ -39,21 +41,8 @@ public class FileImpl : FileSystem.IrnFile
 
     public bool IsBusy() => _notifierList.IsBusy(this);
     internal void Closed() => _notifierList.Closed(this);
-
-    public void SetOwnAttrs(Attr[] attr)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<Attr> GetOwnAttrs()
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<Attr> GetAllAttrs()
-    {
-        throw new NotImplementedException();
-    }
+    public void SetAttrs(params Attr[] attr) => _attrStorage.SetAttrs(this, attr);
+    public IEnumerable<Attr> GetAllAttrs() => _attrStorage.GetAllAttrs(this);
 }
 
 

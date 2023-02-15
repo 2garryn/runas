@@ -2,10 +2,38 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "LiteDB/5.0.15": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/LiteDB.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "DocumentDb/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LiteDb": "5.0.15",
+          "Plugin": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DocumentDb.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DocumentDb.dll": {}
+        }
+      },
       "FileSystem/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "LiteDb": "5.0.15",
           "Plugin": "1.0.0"
         },
         "compile": {
@@ -18,6 +46,9 @@
       "Plugin/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "LiteDb": "5.0.15"
+        },
         "compile": {
           "bin/placeholder/Plugin.dll": {}
         },
@@ -28,6 +59,31 @@
     }
   },
   "libraries": {
+    "LiteDB/5.0.15": {
+      "sha512": "nucyfCOGSATH553BxplxExP3BOqEwmHt0B57426EIaQjD3CC1Odb52VVCGgTxyYaD2oe3B/cJk8jDo6XiBJqPg==",
+      "type": "package",
+      "path": "litedb/5.0.15",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AppVeyorSettings.json",
+        "LICENSE",
+        "icon_64x64.png",
+        "lib/net45/LiteDB.dll",
+        "lib/net45/LiteDB.xml",
+        "lib/netstandard1.3/LiteDB.dll",
+        "lib/netstandard1.3/LiteDB.xml",
+        "lib/netstandard2.0/LiteDB.dll",
+        "lib/netstandard2.0/LiteDB.xml",
+        "litedb.5.0.15.nupkg.sha512",
+        "litedb.nuspec"
+      ]
+    },
+    "DocumentDb/1.0.0": {
+      "type": "project",
+      "path": "../DocumentDb/DocumentDb.csproj",
+      "msbuildProject": "../DocumentDb/DocumentDb.csproj"
+    },
     "FileSystem/1.0.0": {
       "type": "project",
       "path": "../FileSystem/FileSystem.csproj",
@@ -41,6 +97,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "DocumentDb >= 1.0.0",
       "FileSystem >= 1.0.0",
       "Plugin >= 1.0.0"
     ]
@@ -70,6 +127,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "/home/garry/runas/DocumentDb/DocumentDb.csproj": {
+              "projectPath": "/home/garry/runas/DocumentDb/DocumentDb.csproj"
+            },
             "/home/garry/runas/FileSystem/FileSystem.csproj": {
               "projectPath": "/home/garry/runas/FileSystem/FileSystem.csproj"
             },

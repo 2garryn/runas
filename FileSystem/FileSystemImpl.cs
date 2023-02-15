@@ -2,6 +2,7 @@ namespace FsImplementation;
 using FileSystem;
 using Plugin;
 using System.IO;
+using LiteDB;
 
 
 
@@ -12,13 +13,15 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
     private readonly string _pluginId;
     private FileLocker _locker;
     private Notificator _notificator;
+    private AttrStorage _attrStorage;
 
-    public FileSystemImpl(string rootDir, string pluginId, FileLocker locker, Notificator notificator)
+    public FileSystemImpl(string rootDir, string pluginId, FileLocker locker, Notificator notificator, AttrStorage attrStorage)
     {
         _rootDir = rootDir;
         _pluginId = pluginId;
         _locker = locker;
         _notificator = notificator;
+        _attrStorage = attrStorage;
         CreatePluginDir();
     }
 
@@ -56,7 +59,7 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
         return dirs.Select((dir) =>
         {
             var relDir = Path.Join(directory.RelativePath(), Path.GetFileName(Path.GetDirectoryName(dir)));
-            return (IrnDirectory)(new DirectoryImpl(relDir, dir, _locker));
+            return (IrnDirectory)(new DirectoryImpl(relDir, dir, _locker, _attrStorage));
         });
     }
 
@@ -69,10 +72,10 @@ public class FileSystemImpl : FileSystem.IrnFileSystem
     {
         var relPath = Path.Join("/", "plugins", _pluginId);
         var rawPath = Path.Join(_rootDir, relPath);
-        return new DirectoryImpl(relPath, rawPath, _locker);
+        return new DirectoryImpl(relPath, rawPath, _locker, _attrStorage);
     }
 
-    public IrnDirectory RootDirectory() => new DirectoryImpl("/", _rootDir, _locker);
+    public IrnDirectory RootDirectory() => new DirectoryImpl("/", _rootDir, _locker, _attrStorage);
     public void Subscribe(IrnDirectory directory, IFsNotifySubscriber subscriber) => _notificator.Subscribe(directory, subscriber);
     public void Unsubscribe(IrnDirectory directory, IFsNotifySubscriber subscriber) => _notificator.Unsubscribe(directory, subscriber);
 }
