@@ -34,11 +34,45 @@ public class CommandService
             .WithUrlPrefix(_url)
             .WithMode(HttpListenerMode.EmbedIO))
             .WithModule(new ActionModule("/command", HttpVerbs.Post, this.CommandPage))
-            .WithModule(new ActionModule("/", HttpVerbs.Post, this.IndexPage));
+            .WithModule(new ActionModule("/all_commands", HttpVerbs.Post, this.AllPage));
 
     }
 
-    private async Task IndexPage(IHttpContext context)
+    private async Task AllPage(IHttpContext context)
+    {
+       var query = context.GetRequestQueryData();
+       if(query["format"] == "text") 
+       {
+            await AllText(context);
+       } 
+       else 
+       {
+            await AllJson(context);
+       }
+    }
+    private async Task AllJson(IHttpContext context)
+    {
+        await context.SendDataAsync(new
+        {
+            plugins = _pluginRegistry.GetPlugins().Select(pl => new 
+            {
+                plugin_id = pl.Key,
+                commands = pl.Value.GetCommands().Select(c => new
+                {
+                    name = c.Value.Name,
+                    description = c.Value.Description,
+                    parameters = c.Value.Parameters.Select(p => new
+                    {
+                        name = p.Key,
+                        description = p.Value.Description,
+                        required = p.Value.Required,
+                        default_value = p.Value.DefaultValue
+                    })
+                })
+            })
+        });
+    }
+    private async Task AllText(IHttpContext context)
     {
         var sb = new StringBuilder("PLUGINS\n");
         var plugins = _pluginRegistry.GetPlugins();

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gKOy0o7plrLvHCqxpJiv8vZj7G2EwJKoGUqMOdRc4QVAgnl2Ntyqc2JOnZbU9b5w7Meyj6FhZUrDmX7GkI/nJA==",
+  "success": true,
+  "projectFilePath": "/home/garry/runas/RunasClient/RunasClient.csproj",
+  "expectedPackageFiles": [
+    "/home/garry/.nuget/packages/commandlineparser/2.9.1/commandlineparser.2.9.1.nupkg.sha512"
+  ],
+  "logs": []
+}
