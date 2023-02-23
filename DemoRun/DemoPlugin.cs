@@ -38,13 +38,33 @@ public class DemoPlugin : IrnPlugin
         var alreadyExist = fs.Createfile(tempFile);
         Console.WriteLine($"File already exist: {alreadyExist}, exist: {tempFile.Exists()}");
 
+        var cmds = serviceRegistry.GetCommands();
+        var prs = new List<Commands.CommandParameter>()
+        {
+            new Commands.CommandParameter
+            {
+                Name = "parameter1",
+                Description = "Value of Parameter 1",
+                DefaultValue = "",
+                Required = true
+            },
+            new Commands.CommandParameter
+            {
+                Name = "parameter2",
+                Description = "Value of Parameter 2",
+                DefaultValue = "",
+                Required = false
+            },
+        };
 
+
+        cmds.Command("copy_something", "Copy Something", null, prs);
     }
 }
 
 
 public class DemoMetadata : IPluginMetadata
 {
-    public string PluginId { get => "demo_plugin"; }
+    public string PluginId { get => "demo"; }
     public bool FullAccess { get => false; }
 }

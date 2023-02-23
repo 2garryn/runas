@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "NvvbtHgRl2ehIfBVK6EvFSFrdiq9gorgwoAr/Ptnz82y8gh0Pb4OHIMu1L8QmDif2UI4v3wl+bhnICMUc9qK4A==",
+  "dgSpecHash": "5LlG8DKk/uDlL1Hj0VfQze8gefAe+yatcFLLjcH9chP0ImlhHZHnFf2iE2xBjKoCDC605k7X6UjA0iPIm3Ji/w==",
   "success": true,
   "projectFilePath": "/home/garry/runas/RunasLib/RunasLib.csproj",
   "expectedPackageFiles": [
-    "/home/garry/.nuget/packages/litedb/5.0.15/litedb.5.0.15.nupkg.sha512"
+    "/home/garry/.nuget/packages/embedio/3.5.2/embedio.3.5.2.nupkg.sha512",
+    "/home/garry/.nuget/packages/litedb/5.0.15/litedb.5.0.15.nupkg.sha512",
+    "/home/garry/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512",
+    "/home/garry/.nuget/packages/unosquare.swan.lite/3.1.0/unosquare.swan.lite.3.1.0.nupkg.sha512"
   ],
   "logs": []
 }

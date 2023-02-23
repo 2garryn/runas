@@ -56,48 +56,6 @@
           }
         }
       },
-      "Commands/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "EmbedIO": "3.5.2",
-          "Plugin": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Commands.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Commands.dll": {}
-        }
-      },
-      "DocumentDb/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "LiteDb": "5.0.15",
-          "Plugin": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/DocumentDb.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DocumentDb.dll": {}
-        }
-      },
-      "FileSystem/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "LiteDb": "5.0.15",
-          "Plugin": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/FileSystem.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/FileSystem.dll": {}
-        }
-      },
       "Plugin/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -109,22 +67,6 @@
         },
         "runtime": {
           "bin/placeholder/Plugin.dll": {}
-        }
-      },
-      "RunasLib/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "dependencies": {
-          "Commands": "1.0.0",
-          "DocumentDb": "1.0.0",
-          "FileSystem": "1.0.0",
-          "Plugin": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/RunasLib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/RunasLib.dll": {}
         }
       }
     }
@@ -223,41 +165,16 @@
         "unosquare.swan.lite.nuspec"
       ]
     },
-    "Commands/1.0.0": {
-      "type": "project",
-      "path": "../Commands/Commands.csproj",
-      "msbuildProject": "../Commands/Commands.csproj"
-    },
-    "DocumentDb/1.0.0": {
-      "type": "project",
-      "path": "../DocumentDb/DocumentDb.csproj",
-      "msbuildProject": "../DocumentDb/DocumentDb.csproj"
-    },
-    "FileSystem/1.0.0": {
-      "type": "project",
-      "path": "../FileSystem/FileSystem.csproj",
-      "msbuildProject": "../FileSystem/FileSystem.csproj"
-    },
     "Plugin/1.0.0": {
       "type": "project",
       "path": "../Plugin/Plugin.csproj",
       "msbuildProject": "../Plugin/Plugin.csproj"
-    },
-    "RunasLib/1.0.0": {
-      "type": "project",
-      "path": "../RunasLib/RunasLib.csproj",
-      "msbuildProject": "../RunasLib/RunasLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Commands >= 1.0.0",
-      "DocumentDb >= 1.0.0",
       "EmbedIO >= 3.5.2",
-      "FileSystem >= 1.0.0",
-      "LiteDb >= 5.0.15",
-      "Plugin >= 1.0.0",
-      "RunasLib >= 1.0.0"
+      "Plugin >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -266,11 +183,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/garry/runas/DemoRun/DemoRun.csproj",
-      "projectName": "DemoRun",
-      "projectPath": "/home/garry/runas/DemoRun/DemoRun.csproj",
+      "projectUniqueName": "/home/garry/runas/Commands/Commands.csproj",
+      "projectName": "Commands",
+      "projectPath": "/home/garry/runas/Commands/Commands.csproj",
       "packagesPath": "/home/garry/.nuget/packages/",
-      "outputPath": "/home/garry/runas/DemoRun/obj/",
+      "outputPath": "/home/garry/runas/Commands/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/garry/.nuget/NuGet/NuGet.Config"
@@ -285,20 +202,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/home/garry/runas/Commands/Commands.csproj": {
-              "projectPath": "/home/garry/runas/Commands/Commands.csproj"
-            },
-            "/home/garry/runas/DocumentDb/DocumentDb.csproj": {
-              "projectPath": "/home/garry/runas/DocumentDb/DocumentDb.csproj"
-            },
-            "/home/garry/runas/FileSystem/FileSystem.csproj": {
-              "projectPath": "/home/garry/runas/FileSystem/FileSystem.csproj"
-            },
             "/home/garry/runas/Plugin/Plugin.csproj": {
               "projectPath": "/home/garry/runas/Plugin/Plugin.csproj"
-            },
-            "/home/garry/runas/RunasLib/RunasLib.csproj": {
-              "projectPath": "/home/garry/runas/RunasLib/RunasLib.csproj"
             }
           }
         }
@@ -316,10 +221,6 @@
           "EmbedIO": {
             "target": "Package",
             "version": "[3.5.2, )"
-          },
-          "LiteDb": {
-            "target": "Package",
-            "version": "[5.0.15, )"
           }
         },
         "imports": [
