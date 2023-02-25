@@ -1,11 +1,10 @@
 namespace FsImplementation;
 
-using FileSystem;
 using Plugin;
 using System.Collections.Generic;
 using System.IO;
 
-public class FileImpl : FileSystem.IrnFile
+public class FileImpl : IFsFile
 {
     public readonly string _relPath;
     public readonly string _rawPath;
@@ -41,8 +40,8 @@ public class FileImpl : FileSystem.IrnFile
 
     public bool IsBusy() => _notifierList.IsBusy(this);
     internal void Closed() => _notifierList.Closed(this);
-    public void SetAttrs(params Attr[] attr) => _attrStorage.SetAttrs(this, attr);
-    public IEnumerable<Attr> GetAllAttrs() => _attrStorage.GetAllAttrs(this);
+    public void SetAttrs(params FsAttr[] attr) => _attrStorage.SetAttrs(this, attr);
+    public IEnumerable<FsAttr> GetAllAttrs() => _attrStorage.GetAllAttrs(this);
 }
 
 

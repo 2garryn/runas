@@ -1,5 +1,5 @@
 namespace FsImplementation;
-using FileSystem;
+using Plugin;
 using LiteDB;
 
 
@@ -16,10 +16,10 @@ public class AttrStorage
         var col2 = _db.GetCollection<AttrDto>("directories");
         col.EnsureIndex((dto) => dto.Path, true);
     }
-    public void SetAttrs(IrnDirectory directory, Attr[] attrs) => DoSetAttrs(directory.RelativePath(), "files", attrs);
-    public void SetAttrs(IrnFile file, Attr[] attrs) => DoSetAttrs(file.RelativePath(), "directories", attrs);
+    public void SetAttrs(IFsDirectory directory, FsAttr[] attrs) => DoSetAttrs(directory.RelativePath(), "files", attrs);
+    public void SetAttrs(IFsFile file, FsAttr[] attrs) => DoSetAttrs(file.RelativePath(), "directories", attrs);
 
-    private void DoSetAttrs(string path, string collection, Attr[] attrs)
+    private void DoSetAttrs(string path, string collection, FsAttr[] attrs)
     {
         var dtos = attrs.Select((a) =>
             new AttrDto
@@ -37,15 +37,15 @@ public class AttrStorage
             col.Upsert(attr);
         }
     }
-    public IEnumerable<Attr> GetAllAttrs(IrnDirectory directory) => DoGetAllAttrs(directory.RelativePath(), "directories");
-    public IEnumerable<Attr> GetAllAttrs(IrnFile file) => DoGetAllAttrs(file.RelativePath(), "files");
+    public IEnumerable<FsAttr> GetAllAttrs(IFsDirectory directory) => DoGetAllAttrs(directory.RelativePath(), "directories");
+    public IEnumerable<FsAttr> GetAllAttrs(IFsFile file) => DoGetAllAttrs(file.RelativePath(), "files");
 
-    private IEnumerable<Attr> DoGetAllAttrs(string path, string collection)
+    private IEnumerable<FsAttr> DoGetAllAttrs(string path, string collection)
     {
         var col = _db.GetCollection<AttrDto>(collection);
         var attrs = col.Find((dto) => dto.Path == path);
         return attrs.Select((attr) =>
-        new Attr
+        new FsAttr
         {
             Label = attr.Label,
             ID = attr.AttrID,

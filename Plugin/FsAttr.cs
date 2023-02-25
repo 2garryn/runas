@@ -1,6 +1,6 @@
-namespace FileSystem;
+namespace Plugin;
 
-public record Attr
+public record FsAttr
 {
     public required string Label { init; get; }
     public required string ID { init; get; }

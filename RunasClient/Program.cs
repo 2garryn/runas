@@ -6,13 +6,24 @@ class Program
     static async Task Main(string[] args)
     {
         var url = "http://localhost:8089";
-        // Display the number of command line arguments.
-        Console.WriteLine(args.Length);
         if (args.Count() == 0) {
             await AllCommands(url);
+            return;
+        }
+        if (args.Count() == 1) 
+        {
+            Console.WriteLine("Command should be entered");
+            return;
         }
 
-
+        var pluginId = args[0];
+        var command = args[1];
+        var parameters = new List<string>();
+        for(int i = 2; i < args.Count(); i++)
+        {
+            parameters.Add(args[i]);
+        }
+        await ExecuteCommand(url, pluginId, command, parameters);
     }
 
 
@@ -25,6 +36,24 @@ class Program
         string jsonString = JsonSerializer.Serialize(response, options);
         Console.WriteLine(jsonString);
     }
+
+    static async Task ExecuteCommand(string url, string pluginId, string command, List<string> parameters)
+    {
+        var data = new {
+            plugin = pluginId,
+            command = command,
+            parameters = parameters.Select(s => 
+            {
+                var splitted = s.Split("=");
+                return new KeyValuePair<string, string>(splitted[0].Trim(), splitted[1].Trim());
+            }).ToDictionary(k => k.Key, v => v.Value)
+        };
+        var client = new HttpClient();
+        var content = new StringContent(JsonSerializer.Serialize(data), System.Text.Encoding.UTF8, "application/json");
+        using var result = await client.PostAsync(url + "/command", content);
+        var stream = await result.Content.ReadAsStreamAsync();
+        stream.CopyTo(Console.OpenStandardOutput());
+    }
 }
 
 
@@ -36,7 +65,7 @@ public class AllCommandsView
 
 public class PluginView 
 {
-    public string? plugin_id {get;set;}
+    public string? plugin {get;set;}
     public List<CommandView>? commands {get;set;}
 }
 

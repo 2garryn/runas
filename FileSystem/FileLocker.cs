@@ -13,23 +13,23 @@ public class FileLocker
         _notificator = notificator;
     }
 
-    public async Task Opened(FileSystem.IrnFile file)
+    public async Task Opened(IFsFile file)
     {
-        _notificator.Notify(new FileSystem.NotifyFileOpened { File = file });
+        _notificator.Notify(new NotifyFileOpened { File = file });
         var semaphore = _dict.GetOrAdd(file.RelativePath(), (_relativePath) => new SemaphoreSlim(1));
         await semaphore.WaitAsync();
     }
 
-    public void Closed(FileSystem.IrnFile file)
+    public void Closed(IFsFile file)
     {
         SemaphoreSlim? semaphore;
         var removed = _dict.TryRemove(file.RelativePath(), out semaphore);
         if (removed)
         {
             semaphore?.Release();
-            _notificator.Notify(new FileSystem.NotifyFileClosed { File = file });
+            _notificator.Notify(new NotifyFileClosed { File = file });
         }
     }
-    public bool IsBusy(FileSystem.IrnFile file) => _dict.ContainsKey(file.RelativePath());
+    public bool IsBusy(IFsFile file) => _dict.ContainsKey(file.RelativePath());
 
 }

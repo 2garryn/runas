@@ -18,6 +18,23 @@
           }
         }
       },
+      "HttpMultipartParser/8.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IO.RecyclableMemoryStream": "2.2.1",
+          "System.Buffers": "4.5.1"
+        },
+        "compile": {
+          "lib/net7.0/HttpMultipartParser.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/HttpMultipartParser.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "LiteDB/5.0.15": {
         "type": "package",
         "compile": {
@@ -29,6 +46,28 @@
           "lib/netstandard2.0/LiteDB.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Microsoft.IO.RecyclableMemoryStream/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Buffers/4.5.1": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
         }
       },
       "System.ValueTuple/4.5.0": {
@@ -86,6 +125,26 @@
         "lib/netstandard2.0/EmbedIO.xml"
       ]
     },
+    "HttpMultipartParser/8.1.0": {
+      "sha512": "+aPvRqF2RdK4K3447G+qBPgHPQUYaZVV9bMfU+Tfy0U1z2oBvCGEBk3EKr97Ia85pYQ5rmE/+iB82XxLWmGk/g==",
+      "type": "package",
+      "path": "httpmultipartparser/8.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "httpmultipartparser.8.1.0.nupkg.sha512",
+        "httpmultipartparser.nuspec",
+        "lib/net48/HttpMultipartParser.dll",
+        "lib/net48/HttpMultipartParser.xml",
+        "lib/net6.0/HttpMultipartParser.dll",
+        "lib/net6.0/HttpMultipartParser.xml",
+        "lib/net7.0/HttpMultipartParser.dll",
+        "lib/net7.0/HttpMultipartParser.xml",
+        "lib/netstandard2.1/HttpMultipartParser.dll",
+        "lib/netstandard2.1/HttpMultipartParser.xml"
+      ]
+    },
     "LiteDB/5.0.15": {
       "sha512": "nucyfCOGSATH553BxplxExP3BOqEwmHt0B57426EIaQjD3CC1Odb52VVCGgTxyYaD2oe3B/cJk8jDo6XiBJqPg==",
       "type": "package",
@@ -104,6 +163,59 @@
         "lib/netstandard2.0/LiteDB.xml",
         "litedb.5.0.15.nupkg.sha512",
         "litedb.nuspec"
+      ]
+    },
+    "Microsoft.IO.RecyclableMemoryStream/2.2.1": {
+      "sha512": "T5ahjOqWFMTSb9wFHKFNAcGXm35BxbUbwARtAPLSSPPFehcLz5mwDsKO1RR9R2aZ2Lk1BNQC7Ja63onOBE6rpA==",
+      "type": "package",
+      "path": "microsoft.io.recyclablememorystream/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/net462/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/net5.0/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/netcoreapp2.1/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.xml",
+        "microsoft.io.recyclablememorystream.2.2.1.nupkg.sha512",
+        "microsoft.io.recyclablememorystream.nuspec"
+      ]
+    },
+    "System.Buffers/4.5.1": {
+      "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
+      "type": "package",
+      "path": "system.buffers/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Buffers.dll",
+        "lib/net461/System.Buffers.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Buffers.dll",
+        "lib/netstandard1.1/System.Buffers.xml",
+        "lib/netstandard2.0/System.Buffers.dll",
+        "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.1/System.Buffers.dll",
+        "ref/netstandard1.1/System.Buffers.xml",
+        "ref/netstandard2.0/System.Buffers.dll",
+        "ref/netstandard2.0/System.Buffers.xml",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.1.nupkg.sha512",
+        "system.buffers.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.ValueTuple/4.5.0": {
@@ -174,6 +286,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "EmbedIO >= 3.5.2",
+      "HttpMultipartParser >= 8.1.0",
       "Plugin >= 1.0.0"
     ]
   },
@@ -221,6 +334,10 @@
           "EmbedIO": {
             "target": "Package",
             "version": "[3.5.2, )"
+          },
+          "HttpMultipartParser": {
+            "target": "Package",
+            "version": "[8.1.0, )"
           }
         },
         "imports": [

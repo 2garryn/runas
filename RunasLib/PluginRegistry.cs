@@ -19,7 +19,7 @@ public class PluginRegistry
 
     }
 
-    public void RegisterPlugin(IrnPlugin plugin, IPluginMetadata metadata)
+    public void RegisterPlugin(IPlugin plugin, IPluginMetadata metadata)
     {
         var fs = _fileSystemFactory.New(plugin, metadata);
         var docDb = _documentDbFactory.New(metadata.PluginId);

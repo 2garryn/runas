@@ -1,7 +1,7 @@
-namespace FileSystem;
+namespace Plugin;
 using System.IO;
 
-public interface IrnFile
+public interface IFsFile
 {
     public string RelativePath();
     public string RawPath();
@@ -10,6 +10,6 @@ public interface IrnFile
     public Task<StreamReader> CreateStreamReader();
     public Task<StreamWriter> CreateStreamWriter();
     public bool IsBusy();
-    public void SetAttrs(params Attr[] attr);
-    public IEnumerable<Attr> GetAllAttrs();
+    public void SetAttrs(params FsAttr[] attr);
+    public IEnumerable<FsAttr> GetAllAttrs();
 }

@@ -11,9 +11,9 @@ public class Notificator
     {
         _tree = new SubscribersTree();
     }
-    public void Subscribe(FileSystem.IrnDirectory directory, FileSystem.IFsNotifySubscriber subscriber) => _tree.AddSubscriber(directory, subscriber);
-    public void Unsubscribe(FileSystem.IrnDirectory directory, FileSystem.IFsNotifySubscriber subscriber) => _tree.RemoveSubscriber(directory, subscriber);
-    public void Notify(FileSystem.IFsNotify notify) => _tree.Notify(notify);
+    public void Subscribe(IFsDirectory directory, IFsNotifySubscriber subscriber) => _tree.AddSubscriber(directory, subscriber);
+    public void Unsubscribe(IFsDirectory directory, IFsNotifySubscriber subscriber) => _tree.RemoveSubscriber(directory, subscriber);
+    public void Notify(IFsNotify notify) => _tree.Notify(notify);
 }
 
 
@@ -27,11 +27,11 @@ public class SubscribersTree
         _tree = new SubscribersTreeElem
         {
             DirName = "/",
-            Subscribers = new HashSet<FileSystem.IFsNotifySubscriber>(),
+            Subscribers = new HashSet<IFsNotifySubscriber>(),
             SubDirs = new Dictionary<string, SubscribersTreeElem>()
         };
     }
-    public bool AddSubscriber(FileSystem.IrnDirectory directory, FileSystem.IFsNotifySubscriber subscriber)
+    public bool AddSubscriber(IFsDirectory directory, IFsNotifySubscriber subscriber)
     {
         if (!directory.Exists())
         {
@@ -51,7 +51,7 @@ public class SubscribersTree
                 var newElem = new SubscribersTreeElem
                 {
                     DirName = currentPathName,
-                    Subscribers = new HashSet<FileSystem.IFsNotifySubscriber>(),
+                    Subscribers = new HashSet<IFsNotifySubscriber>(),
                     SubDirs = new Dictionary<string, SubscribersTreeElem>()
                 };
                 currentElem.SubDirs[currentPathName] = newElem;
@@ -62,15 +62,15 @@ public class SubscribersTree
         _rwl.ReleaseWriterLock();
         return true;
     }
-    public void RemoveSubscriber(FileSystem.IrnDirectory directory, FileSystem.IFsNotifySubscriber subscriber)
+    public void RemoveSubscriber(IFsDirectory directory, IFsNotifySubscriber subscriber)
     {
 
     }
 
-    public void Notify(FileSystem.IFsNotify notify)
+    public void Notify(IFsNotify notify)
     {
         string[] directories = notify.File.RelativePath().Split(Path.DirectorySeparatorChar);
-        var subscribers = new List<FileSystem.IFsNotifySubscriber>();
+        var subscribers = new List<IFsNotifySubscriber>();
         _rwl.AcquireReaderLock(10000);
         var currentElem = _tree;
         foreach (string currentPathName in directories)
@@ -85,7 +85,7 @@ public class SubscribersTree
                 break;
             }
         }
-        foreach (FileSystem.IFsNotifySubscriber subscriber in subscribers)
+        foreach (IFsNotifySubscriber subscriber in subscribers)
         {
             subscriber.Notify(notify);
         }
@@ -97,6 +97,6 @@ public class SubscribersTree
 public class SubscribersTreeElem
 {
     public required string DirName { get; init; }
-    public required HashSet<FileSystem.IFsNotifySubscriber> Subscribers { get; init; }
+    public required HashSet<IFsNotifySubscriber> Subscribers { get; init; }
     public required Dictionary<string, SubscribersTreeElem> SubDirs { get; init; }
 }

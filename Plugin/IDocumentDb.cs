@@ -1,7 +1,7 @@
-namespace DocumentDb;
+namespace Plugin;
 using LiteDB;
 
-public interface IrnDocumentDb
+public interface IDocumentDb
 {
     public ILiteCollection<T> GetCollection<T>(string name, BsonAutoId autoId = BsonAutoId.ObjectId);
 }

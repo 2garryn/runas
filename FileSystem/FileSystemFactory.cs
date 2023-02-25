@@ -17,7 +17,7 @@ public class FileSystemFactory
 
     }
 
-    public FileSystemImpl New(IrnPlugin plugin, IPluginMetadata metadata)
+    public FileSystemImpl New(IPlugin plugin, IPluginMetadata metadata)
     {
         return new FileSystemImpl(_rootDir, metadata.PluginId, _fileLocker, _notificator, _attrStorage);
     }

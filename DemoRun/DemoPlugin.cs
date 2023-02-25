@@ -1,10 +1,8 @@
-
-using Common;
 using Plugin;
 
-public class DemoPlugin : IrnPlugin
+public class DemoPlugin : IPlugin
 {
-    public void Registered(IrnServiceRegistry serviceRegistry)
+    public void Registered(IServiceRegistry serviceRegistry)
     {
         var fs = serviceRegistry.GetFileSystem();
         if (fs == null)
@@ -27,7 +25,7 @@ public class DemoPlugin : IrnPlugin
         Console.WriteLine($"mydirectory exist: {tempDir.Exists()}");
 
 
-        foreach (FileSystem.IrnDirectory dir in fs.ListDirectories(fs.PluginDirectory()))
+        foreach (IFsDirectory dir in fs.ListDirectories(fs.PluginDirectory()))
         {
             Console.WriteLine(dir.RawPath());
             Console.WriteLine(dir.RelativePath());
@@ -39,16 +37,16 @@ public class DemoPlugin : IrnPlugin
         Console.WriteLine($"File already exist: {alreadyExist}, exist: {tempFile.Exists()}");
 
         var cmds = serviceRegistry.GetCommands();
-        var prs = new List<Commands.CommandParameter>()
+        var prs = new List<CommandParameter>()
         {
-            new Commands.CommandParameter
+            new CommandParameter
             {
                 Name = "parameter1",
                 Description = "Value of Parameter 1",
                 DefaultValue = "",
                 Required = true
             },
-            new Commands.CommandParameter
+            new CommandParameter
             {
                 Name = "parameter2",
                 Description = "Value of Parameter 2",

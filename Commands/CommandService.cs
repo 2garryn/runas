@@ -5,6 +5,7 @@ using EmbedIO.WebApi;
 using EmbedIO.Actions;
 using System.Text;
 using Plugin;
+using HttpMultipartParser;
 public class CommandService
 {
     private string _url;
@@ -34,7 +35,8 @@ public class CommandService
             .WithUrlPrefix(_url)
             .WithMode(HttpListenerMode.EmbedIO))
             .WithModule(new ActionModule("/command", HttpVerbs.Post, this.CommandPage))
-            .WithModule(new ActionModule("/all_commands", HttpVerbs.Post, this.AllPage));
+            .WithModule(new ActionModule("/all_commands", HttpVerbs.Post, this.AllPage))
+            .WithModule(new ActionModule("/upload_files", HttpVerbs.Post, this.UploadFilesPage));
 
     }
 
@@ -56,7 +58,7 @@ public class CommandService
         {
             plugins = _pluginRegistry.GetPlugins().Select(pl => new 
             {
-                plugin_id = pl.Key,
+                plugin = pl.Key,
                 commands = pl.Value.GetCommands().Select(c => new
                 {
                     name = c.Value.Name,
@@ -93,10 +95,11 @@ public class CommandService
     }
 
     private async Task CommandPage(IHttpContext context)
-    {
+    {   
         var data = await context.GetRequestDataAsync<CommandRequest>();
-        PluginCommands? cmds;
-        var found = _pluginRegistry.GetPlugins().TryGetValue(data.plugin, out cmds);
+        Console.WriteLine($"PLUGIN {data.plugin} COMMAND {data.command}");
+        PluginCommands cmds;
+        var found = _pluginRegistry.GetPlugins().TryGetValue(data.plugin, out cmds!);
         if (!found)
         {
             await context.SendStringAsync("Plugin not found", "text/plain", Encoding.UTF8);
@@ -114,6 +117,7 @@ public class CommandService
             await cmd.Callback(new Dictionary<string, string>(), new Context(context));
             return;
         }
+       
         foreach (var paramDef in cmd.Parameters)
         {
             string? paramvalue;
@@ -130,9 +134,68 @@ public class CommandService
         }
         await cmd.Callback(data.parameters, new Context(context));
     }
+    private async Task UploadFilesPage(IHttpContext context)
+    {
+        using var stream = context.OpenRequestStream();
+        var parser = await MultipartFormDataParser.ParseAsync(stream);
+        string plugin = "";
+        var parameters = new Dictionary<string, string>();
+        foreach(ParameterPart p in parser.Parameters)
+        {
+            Console.WriteLine($"Name = {p.Name} Data = {p.Data}");
+            if (p.Name == "plugin")
+            {
+                plugin = p.Data;
+                continue;
+            }
+            parameters[p.Name] = p.Data;
+        }
+        if (plugin == "") 
+        {
+            await context.SendStringAsync($"Plugin is not received", "text/plain", Encoding.UTF8);
+            return;
+        }
+        PluginCommands cmds;
+        var found = _pluginRegistry.GetPlugins().TryGetValue(plugin, out cmds!);
+        if (!found)
+        {
+            await context.SendStringAsync("Plugin not found", "text/plain", Encoding.UTF8);
+            return;
+        }
+        if(cmds.GetUploadFilesCallback() == null) 
+        {
+            await context.SendStringAsync($"Plugin does not support file uploading", "text/plain", Encoding.UTF8);
+            return;
+        }       
+        var cmdParameters = cmds.GetUploadFilesParameters()!;
+
+        foreach (var paramDef in cmdParameters)
+        {
+            string? paramvalue;
+            found = parameters.TryGetValue(paramDef.Name, out paramvalue);
+            if (!found)
+            {
+                if (paramDef.Required)
+                {
+                    await context.SendStringAsync($"Parameter is required: {paramDef.Name}", "text/plain", Encoding.UTF8);
+                    return;
+                }
+                parameters[paramDef.Name] = paramDef.DefaultValue;
+            }
+        }
+        var files = parser.Files.Select(f => new CommandFile
+        {
+            Data = f.Data,
+            FileName = f.FileName,
+            Name = f.Name,
+            ContentType = f.ContentType
+        });
+        await cmds.GetUploadFilesCallback()!(parameters, new Context(context), files);
+
+    }
 }
 
-public class Context : Commands.IrnContext
+public class Context : ICommandContext
 {
     private IHttpContext _context;
     public Context(IHttpContext context)
@@ -141,6 +204,8 @@ public class Context : Commands.IrnContext
         => await _context.SendDataAsync(data);
     public async Task SendStringAsync(string content)
         => await _context.SendStringAsync(content, "text/plain", Encoding.UTF8);
+    public Stream OpenResponseStream() 
+        => _context.OpenResponseStream();
 
 }
 
@@ -150,4 +215,21 @@ public class CommandRequest
     public string plugin { get; set; } = "";
     public string command { get; set; } = "";
     public Dictionary<string, string> parameters { get; set; } = new Dictionary<string, string>();
+}
+
+public class CommandFile: ICommandFile
+{
+    public required Stream Data { get; init; }
+    //
+    // Summary:
+    //     Gets the file name.
+    public required string FileName { get; init; }
+    //
+    // Summary:
+    //     Gets the name.
+    public required string Name { get; init; }
+    //
+    // Summary:
+    //     Gets the content-type. Defaults to text/plain if unspecified.
+    public required string ContentType { get; init; }
 }

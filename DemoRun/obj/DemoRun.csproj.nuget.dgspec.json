@@ -45,6 +45,10 @@
             "EmbedIO": {
               "target": "Package",
               "version": "[3.5.2, )"
+            },
+            "HttpMultipartParser": {
+              "target": "Package",
+              "version": "[8.1.0, )"
             }
           },
           "imports": [

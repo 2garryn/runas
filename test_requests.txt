@@ -1,3 +1,4 @@
-curl -X POST http://localhost:8089/command
-   -H 'Content-Type: application/json'
-   -d '{"plugin":"ping","command":"ping", "parameters":{}}'
+curl -X POST http://localhost:8089/command -H 'Content-Type: application/json' -d '{"plugin":"ping","command":"ping", "parameters":{}}'
+
+
+curl -i -X POST -H "Content-Type: multipart/form-data" -F "data=@Program.cs" -F "plugin=ping" http://localhost:8089/upload_files

@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "5LlG8DKk/uDlL1Hj0VfQze8gefAe+yatcFLLjcH9chP0ImlhHZHnFf2iE2xBjKoCDC605k7X6UjA0iPIm3Ji/w==",
+  "dgSpecHash": "+MC2IHoifnRznISb+ujB9tKoAjfDH2+mCO/t4Tt46gpLmXrzM0xZQtbZrjbf5Q6FHqt5Y71jkHp4/wKMF6N3CQ==",
   "success": true,
   "projectFilePath": "/home/garry/runas/RunasLib/RunasLib.csproj",
   "expectedPackageFiles": [
     "/home/garry/.nuget/packages/embedio/3.5.2/embedio.3.5.2.nupkg.sha512",
+    "/home/garry/.nuget/packages/httpmultipartparser/8.1.0/httpmultipartparser.8.1.0.nupkg.sha512",
     "/home/garry/.nuget/packages/litedb/5.0.15/litedb.5.0.15.nupkg.sha512",
+    "/home/garry/.nuget/packages/microsoft.io.recyclablememorystream/2.2.1/microsoft.io.recyclablememorystream.2.2.1.nupkg.sha512",
+    "/home/garry/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/home/garry/.nuget/packages/system.valuetuple/4.5.0/system.valuetuple.4.5.0.nupkg.sha512",
     "/home/garry/.nuget/packages/unosquare.swan.lite/3.1.0/unosquare.swan.lite.3.1.0.nupkg.sha512"
   ],

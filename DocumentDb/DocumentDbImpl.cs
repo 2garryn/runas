@@ -3,7 +3,7 @@ namespace DocumentDb;
 using LiteDB;
 using Plugin;
 
-public class DocumentDbImpl : DocumentDb.IrnDocumentDb
+public class DocumentDbImpl : IDocumentDb
 {
     private string _prefix;
     private LiteDatabase _db;
